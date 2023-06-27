@@ -1,0 +1,49 @@
+<!-- <h1>User Dashboard</h1>
+<div *ngIf="!selectedRestaurant">
+  <h3>Select a Restaurant:</h3>
+  <ul>
+    <li *ngFor="let restaurant of restaurants">
+      <button (click)="selectRestaurant(restaurant)">{{ restaurant.name }}</button>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="selectedRestaurant">
+  <h3>Selected Restaurant: {{ selectedRestaurant.name }}</h3>
+  <h4>Menu:</h4>
+  <ul>
+    <li *ngFor="let menu of selectedRestaurant.menus">{{ menu.name }}</li>
+  </ul>
+  <button (click)="placeOrder()">Place Order</button>
+</div>
+
+<div *ngIf="orderPlaced">
+  <h3>Order Placed Successfully!</h3>
+</div>
+ -->
+
+
+ <h1>User Dashboard</h1>
+<div *ngIf="!selectedRestaurant">
+  <h3>Select a Restaurant:</h3>
+  <ul>
+    <li *ngFor="let restaurant of restaurants">
+      <button (click)="selectRestaurant(restaurant)">{{ restaurant.name }}</button>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="selectedRestaurant">
+  <h3>Selected Restaurant: {{ selectedRestaurant.name }}</h3>
+  <h4>Menu:</h4>
+  <ul>
+    <li *ngFor="let menu of selectedRestaurant.menus">
+      <button (click)="selectMenu(menu)">{{ menu.name }}</button>
+    </li>
+  </ul>
+  <button (click)="placeOrder()" *ngIf="selectedMenu">Place Order</button>
+</div>
+
+<div *ngIf="orderPlaced">
+  <h3>Order Placed Successfully!</h3>
+</div>

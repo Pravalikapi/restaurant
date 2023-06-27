@@ -1,0 +1,109 @@
+<!-- <h1>Restaurant List</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let restaurant of restaurants">
+      <td>{{ restaurant.name }}</td>
+      <td><button (click)="editRestaurant(restaurant)">Edit</button></td>
+      <td><button (click)="deleteRestaurant(restaurant)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+ -->
+
+
+
+<!-- 
+ <h1>Restaurant List</h1>
+
+<button (click)="openAddRestaurantDialog()">Add Restaurant</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let restaurant of restaurants">
+      <td>{{ restaurant.name }}</td>
+      <td><button (click)="editRestaurant(restaurant)">Edit</button></td>
+      <td><button (click)="deleteRestaurant(restaurant)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="showAddRestaurantDialog">
+  <h2>Add Restaurant</h2>
+  <form (submit)="addRestaurant()">
+    <label>Name:</label>
+    <input [(ngModel)]="newRestaurant.name" name="name" type="text" required>
+
+    <label>Address:</label>
+    <input [(ngModel)]="newRestaurant.address" name="address" type="text" required>
+
+    <button type="submit">Add</button>
+    <button (click)="closeAddRestaurantDialog()">Cancel</button>
+  </form>
+</div> -->
+
+
+
+
+<h1>Restaurant List</h1>
+
+<button (click)="openAddRestaurantDialog()">Add Restaurant</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let restaurant of restaurants">
+      <td>{{ restaurant.name }}</td>
+      <td>
+        <button (click)="editRestaurant(restaurant)">Edit</button>
+        <div *ngIf="restaurant.id === editingRestaurantId">
+          <!-- <h2>Edit Restaurant</h2> -->
+          <form (submit)="saveRestaurant()">
+            <label>Name:</label>
+            <input [(ngModel)]="editingRestaurant.name" name="name" type="text" required>
+
+            <label>Address:</label>
+            <input [(ngModel)]="editingRestaurant.address" name="address" type="text" required>
+
+            <button type="submit">Save</button>
+            <button (click)="cancelEdit()">Cancel</button>
+          </form>
+        </div>
+      </td>
+      <td><button (click)="deleteRestaurant(restaurant)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="showAddRestaurantDialog">
+  <h2>Add Restaurant</h2>
+  <form (submit)="addRestaurant()">
+    <label>Name:</label>
+    <input [(ngModel)]="newRestaurant.name" name="name" type="text" required>
+
+    <label>Address:</label>
+    <input [(ngModel)]="newRestaurant.address" name="address" type="text" required>
+
+    <button type="submit">Add</button>
+    <button (click)="closeAddRestaurantDialog()">Cancel</button>
+  </form>
+</div>

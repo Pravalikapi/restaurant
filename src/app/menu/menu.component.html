@@ -1,0 +1,127 @@
+<!-- 
+
+
+
+<h1>Menu List</h1>
+
+<button (click)="openAddMenuDialog()">Add Menu</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let menu of menus">
+      <td>{{ menu.name }}</td>
+      <td>
+        <button (click)="editMenu(menu)">Edit</button>
+        <div *ngIf="menu.id === editingMenuId">
+          <form (submit)="saveMenu()">
+            <label>Name:</label>
+            <input [(ngModel)]="editingMenu.name" name="name" type="text" required>
+
+            <label>Price:</label>
+            <input [(ngModel)]="editingMenu.price" name="price" type="number" required>
+
+            <button type="submit">Save</button>
+            <button (click)="cancelEdit()">Cancel</button>
+          </form>
+        </div>
+      </td>
+      <td><button (click)="deleteMenu(menu)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="showAddMenuDialog">
+  <h2>Add Menu</h2>
+  <form (submit)="addMenu()">
+    <label>Name:</label>
+    <input [(ngModel)]="newMenu.name" name="name" type="text" required>
+
+    <label>Price:</label>
+    <input [(ngModel)]="newMenu.price" name="price" type="number" required>
+
+    <button type="submit">Add</button>
+    <button (click)="closeAddMenuDialog()">Cancel</button>
+  </form>
+</div> -->
+
+
+
+
+<div class="menu-list">
+  <h1>Menu List</h1>
+  <button class="add-menu-btn" (click)="openAddMenuDialog()">Add Menu</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let menu of menus">
+        <td class="menu-item">
+          <div class="menu-image">
+            <img src="{{ menu.image }}" alt="{{ menu.name }}">
+          </div>
+          <div class="menu-details">
+            <p class="menu-name">{{ menu.name }}</p>
+            <p class="menu-price">{{ menu.price }}</p>
+            <p class="menu-description">{{ menu.description }}</p>
+          </div>
+        </td>
+        <td>
+          <button class="edit-btn" (click)="editMenu(menu)">Edit</button>
+          <div *ngIf="menu.id === editingMenuId">
+            <form class="edit-menu-form" (submit)="saveMenu()">
+              <label>Name:</label>
+              <input [(ngModel)]="editingMenu.name" name="name" type="text" required>
+
+              <label>Price:</label>
+              <input [(ngModel)]="editingMenu.price" name="price" type="number" required>
+
+              <label>Description:</label>
+              <input [(ngModel)]="editingMenu.description" name="description" type="text" required>
+
+              <div class="edit-menu-btns">
+                <button type="submit" class="save-btn">Save</button>
+                <button (click)="cancelEdit()" class="cancel-btn">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </td>
+        <td><button class="delete-btn" (click)="deleteMenu(menu)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="showAddMenuDialog">
+    <h2>Add Menu</h2>
+    <form class="add-menu-form" (submit)="addMenu()">
+      <label>Name:</label>
+      <input [(ngModel)]="newMenu.name" name="name" type="text" required>
+
+      <label>Price:</label>
+      <input [(ngModel)]="newMenu.price" name="price" type="number" required>
+
+      <label>Description:</label>
+      <input [(ngModel)]="newMenu.description" name="description" type="text" required>
+
+      <div class="add-menu-btns">
+        <button type="submit" class="add-btn">Add</button>
+        <button (click)="closeAddMenuDialog()" class="cancel-btn">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
